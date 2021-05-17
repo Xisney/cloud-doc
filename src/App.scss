@@ -1,0 +1,25 @@
+.icon-button {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+
+.left-part {
+  padding: 0;
+}
+
+.file-list {
+  .file-name {
+    vertical-align: middle;
+    user-select: none;
+    cursor: auto;
+  }
+
+  span {
+    display: inline-block;
+  }
+}
+
+.bottom-btn {
+  box-shadow: none !important;
+}
