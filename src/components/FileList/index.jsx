@@ -147,17 +147,4 @@ export default class FileList extends Component {
     onFileDelete: PropTypes.func,
     onFileClick: PropTypes.func,
   };
-
-  static defaultProps = {
-    files: [
-      {
-        id: 1,
-        name: "Hello",
-      },
-      {
-        id: 2,
-        name: "Test",
-      },
-    ],
-  };
 }

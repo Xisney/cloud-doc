@@ -1,0 +1,50 @@
+.tab-list {
+  a.nav-link {
+    background-color: #9ec5fe;
+  }
+
+  .nav-link {
+
+    .close-icon,
+    .dot-icon {
+      position: absolute;
+      right: 0;
+    }
+
+    .close-icon {
+      visibility: hidden;
+    }
+
+    .dot-icon {
+      display: none;
+    }
+  }
+
+  .nav-link.active,
+  .nav-link:hover {
+    .close-icon {
+      visibility: visible;
+    }
+  }
+
+  .nav-link.unsave {
+    .close-icon {
+      display: none;
+    }
+
+    .dot-icon {
+      display: inline-block;
+    }
+  }
+
+  .nav-link.unsave:hover {
+    .dot-icon {
+      display: none;
+    }
+
+    .close-icon {
+      display: inline-block;
+    }
+  }
+
+}

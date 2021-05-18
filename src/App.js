@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 import { FileAddition, Afferent } from "@icon-park/react";
+import SimpleMDE from "react-simplemde-editor";
+import "easymde/dist/easymde.min.css";
 import FileSearch from "components/FileSearch";
 import FileList from "components/FileList";
 import BottomBtn from "components/BottomBtn";
+import TabList from "components/TabList";
 import "./App.scss";
+import files from "utils/defaultFiles";
 
 export default class App extends Component {
+  handleChange = (value) => {
+    console.log(value);
+  };
+
   render() {
     return (
       <div className="container-fluid">
@@ -27,6 +35,7 @@ export default class App extends Component {
               onFileClick={(id) => {
                 console.log(id);
               }}
+              files={files}
             />
             <div className="row mt-2">
               <BottomBtn
@@ -41,8 +50,23 @@ export default class App extends Component {
               />
             </div>
           </div>
-          <div className="col-9 bg-light right-part">
-            <h2>主体</h2>
+          <div className="col-9 bg-light right-part px-0">
+            <TabList
+              activeId="1"
+              onTabClick={(id) => {
+                console.log(id);
+              }}
+              onTabClose={(id) => {
+                console.log(id);
+              }}
+              unSaveIds={["1"]}
+              files={files}
+            />
+            <SimpleMDE
+              onChange={this.handleChange}
+              value={files[1].body}
+              options={{ minHeight: "452px" }}
+            />
           </div>
         </div>
       </div>
