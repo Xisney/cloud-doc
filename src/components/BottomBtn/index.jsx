@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function BottomBtn({ title, btnClass, Icon }) {
+export default function BottomBtn({ title, btnClass, Icon, ...rest }) {
   return (
-    <button type="button" className={`btn ${btnClass} bottom-btn mx-2`}>
+    <button type="button" className={`btn ${btnClass} bottom-btn `} {...rest}>
       <Icon
         theme="outline"
         size="24"

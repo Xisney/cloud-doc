@@ -5,8 +5,7 @@ import { FileCollection, Editor, DeleteOne, Close } from "@icon-park/react";
 export default class FileList extends Component {
   state = { currentName: "", editId: -1 };
 
-  closeInput = (e) => {
-    e.preventDefault();
+  closeInput = () => {
     this.setState({
       currentName: "",
       editId: -1,
@@ -24,7 +23,7 @@ export default class FileList extends Component {
     const { value } = e.target;
     const id = this.state.editId;
     this.props.onFileEdit(id, value);
-    this.closeInput(e);
+    this.closeInput();
   };
 
   handleEditClick = (el) => {
@@ -59,6 +58,7 @@ export default class FileList extends Component {
                   onChange={this.onChangeName}
                   onBlur={this.onChangeNameEnd}
                   ref={(node) => (this.inputNode = node)}
+                  autoFocus
                 />
                 <Close
                   theme="outline"
@@ -72,7 +72,12 @@ export default class FileList extends Component {
               </>
             ) : (
               <>
-                <div className="show-file-info">
+                <div
+                  className="show-file-info"
+                  onClick={() => {
+                    onFileClick(el.id);
+                  }}
+                >
                   <FileCollection
                     theme="outline"
                     size="24"
@@ -80,13 +85,7 @@ export default class FileList extends Component {
                     strokeLinejoin="miter"
                     strokeLinecap="butt"
                   />
-                  <span
-                    className="file-name"
-                    style={{ marginLeft: "8px" }}
-                    onClick={() => {
-                      onFileClick(el.id);
-                    }}
-                  >
+                  <span className="file-name" style={{ marginLeft: "8px" }}>
                     {el.name}
                   </span>
                 </div>
@@ -119,6 +118,13 @@ export default class FileList extends Component {
             )}
           </li>
         ))}
+        {files.length === 0 ? (
+          <li>
+            <h2 className="welcome-page">暂无内容</h2>
+          </li>
+        ) : (
+          ""
+        )}
       </ul>
     );
   }
@@ -127,9 +133,8 @@ export default class FileList extends Component {
     const { keyCode } = e;
     if (keyCode === 13) {
       this.onChangeNameEnd(e);
-      this.closeInput(e);
     } else if (keyCode === 27) {
-      this.closeInput(e);
+      this.closeInput();
     }
   };
 

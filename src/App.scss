@@ -23,3 +23,32 @@
 .bottom-btn {
   box-shadow: none !important;
 }
+
+.cloud-doc {
+  .welcome-page {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ccc;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .left-part,
+  .right-part {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .bottom-btns {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+
+    button {
+      border-radius: 0 !important;
+    }
+  }
+}

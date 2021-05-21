@@ -63,7 +63,7 @@ function FileSearch({ title, onFileSearch }) {
             type="text"
             value={value}
             onChange={(e) => {
-              setValue(e.target.value);
+              setValue(e.target.value.trim());
             }}
             onBlur={(e) => {
               onFileSearch(value);
