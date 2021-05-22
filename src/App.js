@@ -10,6 +10,10 @@ import { nanoid } from "nanoid";
 import "./App.scss";
 import defaultFiles from "utils/defaultFiles";
 import { getRightIndex, debounce } from "utils/functions";
+import fileHelper from "utils/fileHelper";
+
+const TARGET_PATH = "C:\\Users\\kobe\\Desktop";
+console.log(TARGET_PATH);
 
 export default class App extends Component {
   // 单项数据流，DRY，不要重复自己，能够通过state计算出的东西不保存在state
@@ -100,16 +104,15 @@ export default class App extends Component {
   };
 
   handleFileCreate = () => {
+    const newFile = {
+      id: nanoid(),
+      name: "new File",
+      body: "## Keydown your content",
+    };
+    fileHelper.writeFile(TARGET_PATH, newFile.body);
     this.setState(({ files }) => {
       return {
-        files: [
-          ...files,
-          {
-            id: nanoid(),
-            name: "new File",
-            body: "",
-          },
-        ],
+        files: [...files, newFile],
       };
     });
   };

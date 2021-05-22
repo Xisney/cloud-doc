@@ -5,6 +5,9 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 1200,
     height: 650,
+    webPreferences: {
+      nodeIntegration: true,
+    },
   });
 
   const url = isDev ? "http://localhost:3000" : "dummyUrl";
